@@ -1,8 +1,8 @@
 <template>
-  <transition name='bounce'>
+  <transition name='fade'>
     <div class='mr-meeseeks'>
-      <img src='../assets/mr-meeseeks.jpeg'>
-      <p>{{purpose}} - {{id}}</p>
+      <mr-meeseeks-svg v-bind:height='50' v-bind:width='50'></mr-meeseeks-svg>
+      <p>Purpose: {{purpose}}</p>
       <button v-on:click='removeMeeseeksAsync(id)'>Purpose Served</button>
       <button v-on:click='getHelp(purpose)'>Get Help</button>
     </div>
@@ -11,8 +11,12 @@
 
 <script>
 import { mapActions } from 'vuex';
+import MrMeeseeksSVG from './MrMeeseeksSVG.vue';
 
 export default {
+  components: {
+    'mr-meeseeks-svg': MrMeeseeksSVG
+  },
   methods: {
     getHelp(purpose) {
       if (purpose) {
@@ -30,22 +34,26 @@ export default {
 <style scoped>
 .mr-meeseeks {
   padding: 10px;
+  display: inline-block;
 }
 .mr-meeseeks > img {
   height: 100px;
 }
-.bounce-enter-active {
-  animation: bounce 1s;
+.fade-enter-active {
+  animation: fade .6s;
 }
-.bounce-leave-active {
-  animation: bounce 1s reverse;
+.fade-leave-active {
+  animation: fade .6s reverse;
 }
-@keyframes bounce {
+@keyframes fade {
   0% {
-    background: red;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
   }
   100% {
-    background: white;
+    transform: scale(1);
   }
 }
 </style>

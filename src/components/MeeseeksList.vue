@@ -8,9 +8,9 @@
     <section>
       <mr-meeseeks
         v-for='(meeseek, index) in meeseeks'
-        key='meeseek.id'
-        :purpose='meeseek.purpose'
-        :id='meeseek.id'></mr-meeseeks>
+        v-bind:key='meeseek.id'
+        v-bind:purpose='meeseek.purpose'
+        v-bind:id='meeseek.id'></mr-meeseeks>
     </section>
   </div>
 </template>
