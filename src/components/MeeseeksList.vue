@@ -45,4 +45,9 @@ export default {
 
 <style scoped>
 .meeseeks-list {}
+.new-todo {
+  padding: 10px;
+  font-size: 24px;
+  width: 360px;
+}
 </style>
