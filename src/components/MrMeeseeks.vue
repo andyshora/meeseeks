@@ -5,6 +5,9 @@
       <p>Purpose: {{purpose}}</p>
       <button v-on:click='removeMeeseeksAsync(id)'>Purpose Served</button>
       <button v-on:click='getHelp(purpose)'>Get Help</button>
+      <audio autoplay>
+        <source :src='lookAtMeAudio[lookAtMeIndex]' type='audio/mpeg' />
+      </audio>
     </div>
   </transition>
 </template>
@@ -16,6 +19,12 @@ import MrMeeseeksSVG from './MrMeeseeksSVG.vue';
 export default {
   components: {
     'mr-meeseeks-svg': MrMeeseeksSVG
+  },
+  data() {
+    return {
+      lookAtMeAudio: ['/static/media/look-at-me.mp3', '/static/media/look-at-me2.mp3'],
+      lookAtMeIndex: +(Math.random() > 0.5)
+    }
   },
   methods: {
     getHelp(purpose) {
